@@ -1,18 +1,14 @@
-name: Matrix workflow
-on: push
+name: matrix-example
+on: [workflow_dispatch]
+
 jobs:
-  Build:
+  job:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        container: ["gradle:6-jdk8", "gradle:6-jdk11", "gradle:6-jdk17"]
+        container: ["ubuntu:bionic", "fedora:31", "opensuse/leap:42.3", "centos:8"]
     container:
-      image: ${{ matrix.container }}   
-
+      image: ${{ matrix.container }}      
     steps:
-      - name: Clone down repository
-        uses: actions/checkout@v4       
-      - name: Build application
-        run: ci/build-app.sh
-      - name: Test
-        run: ci/unit-test-app.sh
+      - name: check os
+        run: cat /etc/os-release
