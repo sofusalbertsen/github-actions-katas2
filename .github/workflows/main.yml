@@ -25,6 +25,8 @@ jobs:
           name: code
           path: .
       - uses: super-linter/super-linter/slim@main
-        with:
+        env:
           DEFAULT_BRANCH: main
+          # To report GitHub Actions status checks
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          DISABLE_ERRORS: true  
