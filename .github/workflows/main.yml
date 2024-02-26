@@ -2,6 +2,7 @@ name: Main workflow
 on: push
 jobs:
   Build:
+    name: Hej
     runs-on: ubuntu-latest
     container: gradle:6-jdk11
     steps:
